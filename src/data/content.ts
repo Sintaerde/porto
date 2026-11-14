@@ -343,11 +343,12 @@ export const education = {
 }
 
 export interface ContactItem {
-  icon: string
+  kind: 'email' | 'whatsapp' | 'linkedin'
+  /** nama untuk pembaca layar & tooltip */
   label: string
   href: string
+  /** teks yang disalin ke clipboard */
   copy: string
-  ariaLabel: string
   external?: boolean
 }
 
@@ -356,9 +357,10 @@ export const contact = {
   title: ['Mari bangun ', 'sesuatu yang indah', ' bersama.'] as const,
   lead: 'Terbuka untuk peluang di bidang humas, kemitraan, administrasi, konten kreatif, maupun pengembangan web.',
   items: [
-    { icon: '✉️', label: 'sintarmadaniii@gmail.com', href: 'mailto:sintarmadaniii@gmail.com', copy: 'sintarmadaniii@gmail.com', ariaLabel: 'Kirim email ke Sinta' },
-    { icon: '📞', label: '0857-5171-8947', href: 'tel:+6285751718947', copy: '085751718947', ariaLabel: 'Telepon Sinta' },
-    { icon: 'in', label: 'LinkedIn', href: 'https://linkedin.com/in/sinta-ramadani-266ab9368', copy: 'linkedin.com/in/sinta-ramadani-266ab9368', ariaLabel: 'Buka profil LinkedIn Sinta', external: true },
+    { kind: 'email', label: 'Email sintarmadaniii@gmail.com', href: 'mailto:sintarmadaniii@gmail.com', copy: 'sintarmadaniii@gmail.com' },
+    // Nomor yang sama (0857-5171-8947) dipakai untuk WhatsApp
+    { kind: 'whatsapp', label: 'WhatsApp 0857-5171-8947', href: 'https://wa.me/6285751718947', copy: '085751718947', external: true },
+    { kind: 'linkedin', label: 'LinkedIn Sinta Rama Dani', href: 'https://linkedin.com/in/sinta-ramadani-266ab9368', copy: 'linkedin.com/in/sinta-ramadani-266ab9368', external: true },
   ] satisfies ContactItem[],
   copyLabel: 'Salin',
   toast: 'Tersalin ✦',

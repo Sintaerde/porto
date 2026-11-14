@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { contact, img } from '../data/content'
 import { GradTitle } from './Heading'
+import { CopyIcon, LinkedInIcon, MailIcon, WhatsAppIcon } from './icons'
 import { Picture } from './Picture'
 import { Reveal } from './Reveal'
 import { Toast } from './Toast'
+
+const icons = { email: MailIcon, whatsapp: WhatsAppIcon, linkedin: LinkedInIcon }
 
 export function Contact() {
   const [toast, setToast] = useState<string | null>(null)
@@ -34,18 +37,21 @@ export function Contact() {
         <span className="eyebrow">{contact.eyebrow}</span>
         <GradTitle parts={contact.title} id="contact-title" />
         <p className="lead">{contact.lead}</p>
-        <div className="c-list">
-          {contact.items.map((c) => (
-            <div className="c-item" key={c.label}>
-              <a href={c.href} aria-label={c.ariaLabel} {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                <span aria-hidden="true">{c.icon}</span>&nbsp; {c.label}
-              </a>
-              <button type="button" onClick={() => copy(c.copy)} aria-label={`Salin ${c.label}`}>
-                {contact.copyLabel}
-              </button>
-            </div>
-          ))}
-        </div>
+        <ul className="c-list">
+          {contact.items.map((c) => {
+            const Icon = icons[c.kind]
+            return (
+              <li className={'c-item ' + c.kind} key={c.kind}>
+                <a href={c.href} aria-label={c.label} title={c.label} {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  <Icon />
+                </a>
+                <button type="button" className="c-copy" onClick={() => copy(c.copy)} aria-label={contact.copyLabel + ': ' + c.label} title={contact.copyLabel}>
+                  <CopyIcon width={16} height={16} />
+                </button>
+              </li>
+            )
+          })}
+        </ul>
       </Reveal>
       <Toast show={toast !== null} text={toast ?? ''} />
     </section>
