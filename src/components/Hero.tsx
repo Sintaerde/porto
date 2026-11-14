@@ -90,14 +90,14 @@ export function Hero() {
             {l1.map((w, i) => (
               <span key={w}>
                 <m.span className="word" {...word(0.1 + i * 0.12)}>
-                  {w}
+                  {i === 0 ? <span className="grad">{w}</span> : w}
                 </m.span>{' '}
               </span>
             ))}
             <span className="l2">
               {l2.map((w) => (
                 <m.span key={w} className="word" {...word(0.36)}>
-                  <span className="grad">{w}</span>
+                  {w}
                 </m.span>
               ))}
             </span>
