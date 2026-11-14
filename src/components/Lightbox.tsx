@@ -20,7 +20,7 @@ function LightboxView({ item, onClose }: { item: LightboxItem; onClose: () => vo
   return (
     <m.div
       ref={ref}
-      className="lightbox"
+      className={`lightbox${item.img.h / item.img.w > 1.2 ? ' tall' : ''}`}
       role="dialog"
       aria-modal="true"
       aria-label={item.caption ?? item.img.alt}

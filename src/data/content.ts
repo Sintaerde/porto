@@ -21,6 +21,8 @@ export const img = {
   saladFigma: { name: 'salad-figma', w: 1100, h: 546, alt: 'Desain antarmuka aplikasi Salad Mertua di Figma' },
   saladMenu: { name: 'salad-web-menu', w: 1100, h: 510, alt: 'Halaman menu minuman dan desserts pada website Salad Mertua' },
   saladAbout: { name: 'salad-web-about', w: 1100, h: 510, alt: 'Halaman sejarah Salad Mertua pada website' },
+  certDicoding: { name: 'cert-dicoding', w: 1083, h: 1545, alt: 'Sertifikat Kompetensi Kelulusan Dicoding atas nama Sinta Rama Dani untuk kelas Belajar Penerapan Data Science dengan Microsoft Fabric, 28 Agustus 2026' },
+  certWorkshop: { name: 'cert-workshop', w: 1100, h: 1548, alt: 'Sertifikat peserta Workshop Pendampingan dan Peningkatan Peringkat Jurnal Ilmiah Terakreditasi Tahun 2025 atas nama Sinta Rama Dani, beserta tabel materi' },
   jurnal: { name: 'jurnal', w: 900, h: 993, alt: 'Halaman pertama artikel jurnal JINITA tentang prediksi waktu tanam padi' },
 } satisfies Record<string, Img>
 
@@ -325,7 +327,18 @@ export const education = {
       lightbox: { img: img.hki, caption: 'Surat Pencatatan Ciptaan — Arsipin · No. 001091892' },
     },
     { icon: '🏛️', title: 'Sertifikat Magang — Dinas Ketahanan Pangan Kalbar', detail: 'Januari 2026' },
-    { icon: '📊', title: 'Dicoding & Microsoft: Penerapan Data Science dengan Microsoft Fabric', detail: 'Agustus 2026' },
+    {
+      icon: '📊',
+      title: 'Dicoding & Microsoft: Penerapan Data Science dengan Microsoft Fabric',
+      detail: '28 Agustus 2026',
+      lightbox: { img: img.certDicoding, caption: 'Sertifikat Kompetensi Kelulusan Dicoding — Belajar Penerapan Data Science dengan Microsoft Fabric' },
+    },
+    {
+      icon: '🎓',
+      title: 'Workshop Pendampingan & Peningkatan Peringkat Jurnal Ilmiah Terakreditasi 2025',
+      detail: '16 September 2025 · Kemdiktisaintek × Universitas Muhammadiyah Pontianak · Peserta',
+      lightbox: { img: img.certWorkshop, caption: 'Sertifikat Peserta Workshop Jurnal Ilmiah Terakreditasi Tahun 2025' },
+    },
   ] satisfies Cert[],
 }
 
