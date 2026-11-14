@@ -1,0 +1,43 @@
+name: Deploy ke GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # base otomatis dari nama repo: /nama-repo/ (atau / bila repo bernama <user>.github.io).
+      # Pakai custom domain? Ubah baris ini menjadi: echo "VITE_BASE=/" >> "$GITHUB_ENV"
+      - name: Tentukan base path
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          case "$REPO" in
+            *.github.io) echo "VITE_BASE=/" >> "$GITHUB_ENV" ;;
+            *) echo "VITE_BASE=/${REPO}/" >> "$GITHUB_ENV" ;;
+          esac
+
+      - name: Konfigurasi identitas Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - run: npm run deploy
