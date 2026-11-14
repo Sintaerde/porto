@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinta Rama Dani — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff6f8; --bg2:#fbeef3; --ink:#3b2342; --ink-soft:#6f5874; --line:rgba(59,35,66,.10);
+  --rose:#e9719a; --rose-d:#cf4f7c; --lav:#b7a1ff; --peach:#ffc4ad; --pearl:#fff;
+  --card:rgba(255,255,255,.62); --shadow:0 30px 60px -30px rgba(120,50,100,.35), 0 8px 20px -10px rgba(120,50,100,.15);
+  --r:28px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+.serif{font-family:"Fraunces",Georgia,serif}
+a{color:inherit}
+::selection{background:var(--rose);color:#fff}
+
+/* ambient background */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vw;height:46vw;background:#ffd3e1;top:-10vw;left:-8vw}
+.aurora i:nth-child(2){width:40vw;height:40vw;background:#e3d8ff;top:30vh;right:-12vw;animation-delay:-6s}
+.aurora i:nth-child(3){width:36vw;height:36vw;background:#ffe2d4;bottom:-12vw;left:20vw;animation-delay:-12s}
+@keyframes drift{to{transform:translate(6vw,4vh) scale(1.1)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.3 0 0 0 0 0.4 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cursor-glow{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(233,113,154,.18),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
+
+/* nav */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 30px -12px rgba(120,50,100,.25)}
+nav .logo{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--rose),var(--lav));color:#fff;font-family:Fraunces;font-style:italic;font-weight:600;margin-right:6px}
+nav a{text-decoration:none;font-size:14px;font-weight:500;padding:9px 16px;border-radius:999px;color:var(--ink-soft);transition:.25s var(--ease)}
+nav a:hover,nav a.active{color:var(--ink);background:#fff}
+@media(max-width:760px){nav a:not(.cta){display:none} nav{gap:8px}}
+nav a.cta{background:var(--ink);color:#fff}
+nav a.cta:hover{background:var(--rose-d)}
+
+section{position:relative;padding:120px 6vw;max-width:1280px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-d)}
+.eyebrow::before{content:"";width:28px;height:1.5px;background:currentColor}
+h2{font-family:Fraunces,serif;font-weight:400;font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-.02em;margin:14px 0 18px}
+h2 em{font-style:italic;background:linear-gradient(100deg,var(--rose),#a77bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--ink-soft);max-width:620px;font-size:17px}
+
+/* hero */
+#hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:20px;padding-top:110px;max-width:1360px}
+#scene{position:absolute;inset:0;z-index:0}
+#scene canvas{display:block}
+.hero-text{position:relative;z-index:2;pointer-events:none}
+.hero-text>*{pointer-events:auto}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid #fff;backdrop-filter:blur(10px);font-size:13.5px;font-weight:500;box-shadow:0 6px 18px -10px rgba(120,50,100,.3)}
+.badge b{display:inline-flex;align-items:center;gap:6px;background:#e8fbf2;color:#1f8a5b;border-radius:999px;padding:3px 10px;font-size:12px}
+.badge b::before{content:"";width:7px;height:7px;border-radius:50%;background:#2fbf7f;box-shadow:0 0 0 3px rgba(47,191,127,.25);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(47,191,127,0)}}
+.hero-text h1{font-family:Fraunces,serif;font-weight:400;font-size:clamp(52px,8.2vw,118px);line-height:.92;letter-spacing:-.035em;margin:26px 0 22px}
+.hero-text h1 .l2{display:block;font-style:italic;padding-left:.6em;background:linear-gradient(100deg,var(--rose) 10%,#a77bff 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-text h1 .word{display:inline-block;opacity:0;transform:translateY(40px) rotateX(-40deg);animation:rise 1s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.roles{font-size:18px;color:var(--ink-soft);max-width:520px}
+.roles strong{color:var(--ink);font-weight:600}
+.typed{color:var(--rose-d);font-weight:600;border-right:2px solid var(--rose);padding-right:3px}
+.hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:.3s var(--ease);font-family:inherit}
+.btn-primary{color:#fff;background:linear-gradient(135deg,var(--rose),#c06bff);box-shadow:0 14px 30px -10px rgba(207,79,124,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(207,79,124,.7)}
+.btn-ghost{background:rgba(255,255,255,.75);color:var(--ink);border:1px solid #fff;backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:#fff;transform:translateY(-3px)}
+.hero-side{position:relative;z-index:2;height:100%;pointer-events:none}
+.float-chip{position:absolute;pointer-events:auto;padding:14px 18px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid #fff;backdrop-filter:blur(14px);box-shadow:var(--shadow);animation:bob 6s ease-in-out infinite}
+.float-chip small{display:block;font-size:11.5px;color:var(--ink-soft);font-weight:500;letter-spacing:.04em}
+.float-chip span{font-family:Fraunces;font-size:28px;font-weight:600;line-height:1.1}
+.float-chip.c1{top:22%;right:4%}
+.float-chip.c2{bottom:20%;left:2%;animation-delay:-2s}
+.float-chip.c3{bottom:8%;right:12%;animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-14px)}}
+.scroll-hint{position:absolute;bottom:28px;left:6vw;z-index:2;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:12px}
+.scroll-hint i{width:22px;height:36px;border:1.5px solid var(--ink-soft);border-radius:12px;position:relative}
+.scroll-hint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--rose);transform:translateX(-50%);animation:wheel 1.6s infinite}
+@keyframes wheel{to{transform:translate(-50%,10px);opacity:0}}
+@media(max-width:900px){#hero{grid-template-columns:1fr;min-height:auto;padding-bottom:140px}.hero-side{height:340px}#scene{opacity:.85}}
+
+/* marquee */
+.marquee{overflow:hidden;padding:26px 0;border-block:1px solid var(--line);background:rgba(255,255,255,.4);transform:rotate(-1.2deg);margin:0 -2vw}
+.marquee-track{display:flex;gap:46px;width:max-content;animation:scroll 34s linear infinite;font-family:Fraunces;font-style:italic;font-size:30px;color:var(--ink)}
+.marquee-track span{display:flex;align-items:center;gap:46px;white-space:nowrap}
+.marquee-track span::after{content:"✦";font-style:normal;color:var(--rose);font-size:20px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.portrait-wrap{perspective:1200px}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:36px;transform-style:preserve-3d;transition:transform .2s ease-out}
+.portrait .layer{position:absolute;inset:0;border-radius:inherit}
+.portrait .l-back{background:linear-gradient(150deg,#ffd6e3,#d9ccff 60%,#ffe0d0);box-shadow:var(--shadow);transform:translateZ(0)}
+.portrait .l-mid{inset:9%;border-radius:200px 200px 30px 30px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.25));border:1px solid rgba(255,255,255,.9);transform:translateZ(40px);display:grid;place-items:center;overflow:hidden}
+.portrait .monogram{font-family:Fraunces;font-style:italic;font-size:clamp(90px,14vw,170px);font-weight:400;background:linear-gradient(160deg,var(--rose),#9b6bff);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.portrait .photo-note{position:absolute;bottom:12%;font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+.portrait .tag{position:absolute;transform:translateZ(90px);padding:10px 16px;border-radius:16px;background:#fff;box-shadow:var(--shadow);font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:8px}
+.portrait .tag.t1{top:8%;right:-6%}
+.portrait .tag.t2{bottom:16%;left:-8%}
+.portrait .tag .dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:34px}
+.stat{padding:22px;border-radius:22px;background:var(--card);border:1px solid #fff;backdrop-filter:blur(10px);transition:.35s var(--ease)}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.stat .num{font-family:Fraunces;font-size:42px;font-weight:600;line-height:1;letter-spacing:-.02em}
+.stat .num sup{font-size:18px;color:var(--rose)}
+.stat p{font-size:13.5px;color:var(--ink-soft);margin-top:6px}
+
+/* experience */
+.tabs{display:inline-flex;padding:6px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid #fff;margin:10px 0 40px;position:relative}
+.tabs button{position:relative;z-index:1;border:0;background:none;font:600 14.5px "Plus Jakarta Sans";padding:12px 22px;border-radius:999px;color:var(--ink-soft);cursor:pointer;transition:color .3s}
+.tabs button.on{color:#fff}
+.tabs .pill{position:absolute;top:6px;bottom:6px;border-radius:999px;background:var(--ink);transition:.45s var(--ease)}
+.timeline{position:relative;display:grid;gap:22px}
+.timeline::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--rose),var(--lav),transparent)}
+.t-item{position:relative;padding-left:70px;perspective:1000px}
+.t-item .node{position:absolute;left:8px;top:28px;width:32px;height:32px;border-radius:50%;background:#fff;border:2px solid var(--rose);display:grid;place-items:center;font-size:14px;box-shadow:0 0 0 6px var(--bg)}
+.t-card{padding:28px 30px;border-radius:var(--r);background:var(--card);border:1px solid #fff;backdrop-filter:blur(14px);box-shadow:0 10px 30px -20px rgba(120,50,100,.3);transition:transform .25s ease-out,box-shadow .4s;transform-style:preserve-3d}
+.t-card:hover{box-shadow:var(--shadow)}
+.t-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.t-head h3{font-family:Fraunces;font-weight:600;font-size:23px;letter-spacing:-.01em}
+.t-head .when{font-size:13px;font-weight:600;color:var(--rose-d);background:#ffe8ef;padding:5px 12px;border-radius:999px;white-space:nowrap}
+.t-org{color:var(--ink-soft);font-weight:500;margin:2px 0 14px}
+.t-card ul{list-style:none;display:grid;gap:9px}
+.t-card li{position:relative;padding-left:22px;font-size:15px;color:#4d3653}
+.t-card li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:3px;background:linear-gradient(135deg,var(--rose),var(--lav));transform:rotate(45deg)}
+.t-card li b{color:var(--ink)}
+.panel{display:none}
+.panel.on{display:grid;animation:fade .6s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;margin-top:50px}
+.proj{grid-column:span 6;perspective:1200px}
+.proj.wide{grid-column:span 7}.proj.narrow{grid-column:span 5}
+@media(max-width:900px){.proj,.proj.wide,.proj.narrow{grid-column:span 12}}
+.proj-inner{height:100%;border-radius:32px;background:var(--card);border:1px solid #fff;backdrop-filter:blur(14px);overflow:hidden;transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .4s;position:relative;cursor:pointer}
+.proj-inner:hover{box-shadow:var(--shadow)}
+.proj-inner .shine{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 45%);opacity:0;transition:opacity .3s;z-index:3}
+.proj-inner:hover .shine{opacity:1}
+.mock{height:260px;position:relative;display:grid;place-items:center;overflow:hidden;transform:translateZ(30px)}
+.proj-body{padding:26px 30px 30px;transform:translateZ(20px)}
+.proj-body .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-d)}
+.proj-body h3{font-family:Fraunces;font-weight:600;font-size:26px;letter-spacing:-.01em;margin:6px 0 8px;line-height:1.15}
+.proj-body p{color:var(--ink-soft);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.chip{font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+.open-ic{position:absolute;top:18px;right:18px;z-index:4;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 8px 20px -8px rgba(0,0,0,.2);transition:.35s var(--ease);transform:translateZ(60px)}
+.proj-inner:hover .open-ic{background:var(--ink);color:#fff;transform:translateZ(60px) rotate(-45deg)}
+
+/* mock 1: archive app */
+.m-arsip{background:linear-gradient(140deg,#ffe1ea,#efe6ff)}
+.win{width:78%;border-radius:16px;background:#fff;box-shadow:0 30px 50px -25px rgba(90,40,90,.45);overflow:hidden;transform:rotate(-4deg) translateY(10px)}
+.win .bar{display:flex;gap:6px;padding:10px 12px;background:#faf3f6}
+.win .bar i{width:9px;height:9px;border-radius:50%;background:#f3b7c9}.win .bar i:nth-child(2){background:#d9c9ff}.win .bar i:nth-child(3){background:#ffd6c4}
+.win .body{display:grid;grid-template-columns:70px 1fr;min-height:150px}
+.win .side{background:#fdf6f9;padding:12px 10px;display:grid;gap:8px;align-content:start}
+.win .side b{height:8px;border-radius:4px;background:#f0d9e2}.win .side b:first-child{background:var(--rose)}
+.win .main{padding:12px;display:grid;gap:8px;align-content:start}
+.win .row{display:grid;grid-template-columns:18px 1fr 40px;gap:8px;align-items:center}
+.win .row i{width:18px;height:18px;border-radius:5px;background:#efe6ff}
+.win .row b{height:7px;border-radius:4px;background:#f1eaf0}
+.win .row s{height:14px;border-radius:7px;background:#e6f8ef;text-decoration:none}
+.win .row:nth-child(2) s{background:#ffe8ef}
+.hki{position:absolute;top:22px;left:22px;background:#fff;border-radius:14px;padding:8px 12px;font-size:12px;font-weight:700;box-shadow:0 10px 20px -10px rgba(0,0,0,.2);transform:rotate(-6deg)}
+/* mock 2: phone */
+.m-kasir{background:linear-gradient(160deg,#fff1c9,#ffd5e2)}
+.phone{width:130px;height:230px;border-radius:26px;background:#fff;border:6px solid #3b2342;transform:rotate(8deg) translate(-30px,20px);padding:14px 10px;display:grid;gap:7px;align-content:start;box-shadow:0 30px 50px -20px rgba(90,40,90,.5)}
+.phone .tot{font-family:Fraunces;font-weight:600;font-size:18px}
+.phone .it{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.phone .it i{width:22px;height:22px;border-radius:7px;background:#c8f1d9}.phone .it:nth-child(3) i{background:#ffd8c7}.phone .it:nth-child(4) i{background:#e9defe}
+.phone .it b{flex:1;height:6px;border-radius:3px;background:#f1eaf0}
+.phone .pay{margin-top:6px;height:24px;border-radius:9px;background:var(--rose)}
+.laptop{position:absolute;right:8%;bottom:24%;width:150px;height:96px;border-radius:10px;background:#fff;box-shadow:0 20px 40px -20px rgba(90,40,90,.5);transform:rotate(-6deg);padding:10px;display:grid;gap:6px;align-content:start}
+.laptop b{height:30px;border-radius:7px;background:linear-gradient(120deg,#c8f1d9,#ffe3d6)}
+.laptop i{height:6px;border-radius:3px;background:#f1eaf0}
+/* mock 3: chart */
+.m-riset{background:linear-gradient(160deg,#e9e3ff,#fde3ec)}
+.m-riset svg{width:82%;filter:drop-shadow(0 20px 30px rgba(90,40,90,.25))}
+/* mock 4: video */
+.m-video{background:linear-gradient(150deg,#3b2342,#7a3d6c)}
+.reel{display:flex;gap:10px;transform:rotate(-6deg)}
+.reel div{width:70px;height:120px;border-radius:14px;background:linear-gradient(170deg,#ffb6cb,#b7a1ff);opacity:.9}
+.reel div:nth-child(2){height:150px;background:linear-gradient(170deg,#ffd0bc,#ff8fb1);transform:translateY(-10px)}
+.reel div:nth-child(3){background:linear-gradient(170deg,#c9b9ff,#ffc4ad)}
+.play{position:absolute;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(255,255,255,.18);animation:ring 2.4s infinite}
+@keyframes ring{50%{box-shadow:0 0 0 20px rgba(255,255,255,.06)}}
+.socials{position:absolute;bottom:18px;left:18px;display:flex;gap:8px}
+.socials span{font-size:12px;font-weight:600;color:#fff;background:rgba(255,255,255,.16);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+
+/* skills */
+.skills-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center;margin-top:30px}
+@media(max-width:900px){.skills-wrap{grid-template-columns:1fr}}
+.orbit{position:relative;aspect-ratio:1;max-width:480px;width:100%;margin:auto}
+.orbit .core{position:absolute;inset:34%;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#ffc9da 45%,#c6b2ff);box-shadow:inset -14px -18px 40px rgba(150,80,160,.35),0 30px 60px -20px rgba(150,80,160,.5);display:grid;place-items:center;text-align:center;font-family:Fraunces;font-style:italic;font-size:22px;line-height:1.1}
+.orbit .ring{position:absolute;border-radius:50%;border:1.5px dashed rgba(183,161,255,.6);animation:spin linear infinite}
+.orbit .ring.r1{inset:18%;animation-duration:30s}
+.orbit .ring.r2{inset:2%;animation-duration:46s;animation-direction:reverse;border-color:rgba(233,113,154,.45)}
+.orbit .ring span{position:absolute;padding:8px 13px;border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;box-shadow:0 10px 20px -10px rgba(120,50,100,.35);white-space:nowrap;animation:spin linear infinite reverse}
+.orbit .ring.r1 span{animation-duration:30s}.orbit .ring.r2 span{animation-duration:46s;animation-direction:normal}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit .ring span{translate:-50% -50%}
+.skill-groups{display:grid;gap:12px}
+.sg{border-radius:22px;background:var(--card);border:1px solid #fff;overflow:hidden;transition:.3s}
+.sg summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;font-weight:600;font-size:16px}
+.sg summary::-webkit-details-marker{display:none}
+.sg summary .ic{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;font-size:18px;flex:none}
+.sg summary .pl{margin-left:auto;width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:.35s var(--ease)}
+.sg[open] summary .pl{transform:rotate(45deg);background:var(--ink);color:#fff}
+.sg[open]{box-shadow:var(--shadow);background:rgba(255,255,255,.85)}
+.sg .content{padding:0 22px 20px 76px;display:flex;flex-wrap:wrap;gap:8px}
+.sg .content .chip{background:var(--bg2);border:0}
+
+/* education & certs */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+@media(max-width:900px){.edu-grid{grid-template-columns:1fr}}
+.edu-card{position:relative;border-radius:32px;padding:36px;color:#fff;overflow:hidden;background:linear-gradient(150deg,#3b2342,#6d3a68 60%,#c0577f);box-shadow:var(--shadow)}
+.edu-card::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-80px;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5),rgba(255,180,210,.15) 50%,transparent 70%)}
+.edu-card .cum{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:999px}
+.edu-card h3{font-family:Fraunces;font-weight:400;font-size:32px;line-height:1.1;margin:18px 0 6px}
+.edu-card .gpa{display:flex;align-items:flex-end;gap:12px;margin:26px 0 18px}
+.edu-card .gpa b{font-family:Fraunces;font-size:84px;font-weight:600;line-height:.85}
+.edu-card .gpa small{opacity:.75;padding-bottom:8px}
+.gpa-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden}
+.gpa-bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#ffc4ad,#ff9fc0,#c9b4ff);transition:width 1.8s var(--ease)}
+.edu-card .thesis{margin-top:22px;font-size:14.5px;opacity:.85}
+.edu-card .thesis em{font-family:Fraunces;font-size:17px;display:block;opacity:1;margin-top:4px}
+.certs{display:grid;gap:12px}
+.cert{display:flex;gap:16px;align-items:center;padding:18px 20px;border-radius:22px;background:var(--card);border:1px solid #fff;transition:.35s var(--ease)}
+.cert:hover{transform:translateX(8px);background:#fff;box-shadow:var(--shadow)}
+.cert .medal{width:50px;height:50px;border-radius:16px;flex:none;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,#ffe1ea,#ece4ff);box-shadow:inset 0 -4px 8px rgba(150,80,160,.12)}
+.cert h4{font-size:15.5px;font-weight:600;line-height:1.35}
+.cert p{font-size:13px;color:var(--ink-soft)}
+
+/* contact */
+.contact{margin:40px auto 0;border-radius:44px;padding:clamp(40px,7vw,90px);text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#ffd9e5,#e6dcff 55%,#ffe4d6);box-shadow:var(--shadow)}
+.contact h2{font-size:clamp(40px,6.5vw,86px);margin:16px auto 20px;max-width:900px}
+.contact .lead{margin:0 auto}
+.c-list{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:38px}
+.c-item{display:flex;align-items:center;gap:12px;padding:12px 12px 12px 20px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid #fff;backdrop-filter:blur(10px);font-weight:500;font-size:15px}
+.c-item button{border:0;cursor:pointer;font:600 12.5px "Plus Jakarta Sans";padding:8px 14px;border-radius:999px;background:var(--ink);color:#fff;transition:.25s}
+.c-item button:hover{background:var(--rose-d)}
+.c-item a{text-decoration:none}
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:500;z-index:99;transition:.45s var(--ease)}
+.toast.show{transform:translate(-50%,0)}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,rgba(255,255,255,.2) 50%,rgba(233,113,154,.15));border:1px solid rgba(255,255,255,.7);animation:bob 8s ease-in-out infinite}
+footer{text-align:center;padding:50px 20px 40px;color:var(--ink-soft);font-size:13.5px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px;background:rgba(59,35,66,.35);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:.35s}
+.modal.on{opacity:1;pointer-events:auto}
+.modal-box{max-width:560px;width:100%;background:#fff;border-radius:32px;padding:36px;box-shadow:0 40px 80px -30px rgba(59,35,66,.5);transform:translateY(30px) scale(.96);transition:.45s var(--ease);position:relative}
+.modal.on .modal-box{transform:none}
+.modal-box h3{font-family:Fraunces;font-weight:600;font-size:28px;line-height:1.15;margin:6px 0 12px}
+.modal-box p{color:var(--ink-soft)}
+.modal-box ul{margin:16px 0 0 18px;color:#4d3653;display:grid;gap:6px;font-size:15px}
+.modal-box .x{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;border:0;background:var(--bg2);cursor:pointer;font-size:18px}
+.modal-box .note{margin-top:20px;font-size:12.5px;padding:10px 14px;border-radius:12px;background:#fff6e8;color:#8a5a1f}
+
+/* real images */
+.portrait .l-mid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.portrait .l-mid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(59,35,66,.25));pointer-events:none}
+.phone-real{width:150px;height:290px;border-radius:28px;border:7px solid #3b2342;overflow:hidden;background:#fff;transform:rotate(7deg) translateY(30px);box-shadow:0 30px 50px -20px rgba(90,40,90,.5)}
+.phone-real img{width:100%;height:100%;object-fit:cover;object-position:top}
+.m-kasir .fchip{position:absolute;background:#fff;border-radius:14px;padding:8px 12px;font-size:12px;font-weight:700;box-shadow:0 12px 24px -12px rgba(0,0,0,.25)}
+.paper{width:78%;border-radius:10px;overflow:hidden;background:#fff;transform:rotate(-5deg) translateY(36px);box-shadow:0 30px 50px -22px rgba(90,40,90,.5)}
+.paper img{display:block;width:100%}
+.m-riset .sinta2{position:absolute;top:20px;right:22px;background:var(--ink);color:#fff;border-radius:14px;padding:8px 12px;font-size:12px;font-weight:700;transform:rotate(6deg);box-shadow:0 12px 24px -12px rgba(0,0,0,.35)}
+a.play{text-decoration:none;z-index:5;transition:transform .3s var(--ease)}
+a.play:hover{transform:scale(1.12)}
+.avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 18px;padding:5px;background:linear-gradient(135deg,var(--rose),var(--lav),var(--peach));box-shadow:var(--shadow);position:relative}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 8%;border:4px solid #fff;display:block}
+.avatar::after{content:"👋";position:absolute;right:-4px;bottom:4px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:18px;box-shadow:0 6px 14px -6px rgba(0,0,0,.3)}
+.modal-box{max-height:90vh;overflow:auto}
+.modal-box .shot{margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line);max-height:300px}
+.modal-box .shot img{display:block;width:100%;object-fit:cover;object-position:top}
+.modal-box .meta{margin-top:14px;font-size:13px;color:var(--ink-soft);background:var(--bg2);padding:10px 14px;border-radius:12px}
+.modal-box .btn{margin-top:20px}
+
+/* gallery & lightbox */
+.browser{width:84%;border-radius:12px;overflow:hidden;background:#fff;transform:rotate(-4deg) translateY(40px);box-shadow:0 30px 50px -22px rgba(90,40,90,.5)}
+.browser .bar{display:flex;gap:6px;padding:8px 10px;background:#faf3f6}
+.browser .bar i{width:8px;height:8px;border-radius:50%;background:#f3b7c9}.browser .bar i:nth-child(2){background:#d9c9ff}.browser .bar i:nth-child(3){background:#ffd6c4}
+.browser img{display:block;width:100%}
+.m-kasir .web-behind{position:absolute;width:62%;left:6%;top:16%;border-radius:10px;overflow:hidden;transform:rotate(-6deg);box-shadow:0 24px 40px -20px rgba(90,40,90,.45);opacity:.95}
+.m-kasir .web-behind img{display:block;width:100%}
+.m-kasir .phone-real{position:relative;left:22%}
+.gallery{display:flex;gap:12px;overflow-x:auto;margin-top:18px;padding-bottom:6px;scroll-snap-type:x mandatory}
+.gallery figure{flex:0 0 78%;scroll-snap-align:start;cursor:zoom-in}
+.gallery figure.tall{flex-basis:38%}
+.gallery img{display:block;width:100%;height:190px;object-fit:cover;object-position:top;border-radius:14px;border:1px solid var(--line);transition:.3s var(--ease)}
+.gallery figure:hover img{transform:translateY(-3px);box-shadow:var(--shadow)}
+.gallery figcaption{font-size:12.5px;color:var(--ink-soft);margin-top:6px;font-weight:500}
+.modal-box{max-width:640px}
+.lightbox{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:24px;background:rgba(30,15,35,.82);opacity:0;pointer-events:none;transition:.3s;cursor:zoom-out}
+.lightbox.on{opacity:1;pointer-events:auto}
+.lightbox img{max-width:100%;max-height:84vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.95);transition:.35s var(--ease)}
+.lightbox.on img{transform:none}
+.lightbox p{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#fff;font-size:14px}
+.cert.clickable{cursor:zoom-in}
+.cert .see{margin-left:auto;font-size:12px;font-weight:700;color:var(--rose-d);white-space:nowrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero-text h1 .word{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<nav id="nav">
+  <span class="logo">S</span>
+  <a href="#about">Tentang</a>
+  <a href="#experience">Pengalaman</a>
+  <a href="#projects">Proyek</a>
+  <a href="#skills">Keahlian</a>
+  <a href="#contact" class="cta">Hubungi</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div id="scene"></div>
+  <div class="hero-text">
+    <span class="badge"><b>Open to work</b> Kalimantan Barat · Remote / Onsite</span>
+    <h1><span class="word" style="animation-delay:.1s">Sinta</span> <span class="word" style="animation-delay:.22s">Rama</span>
+      <span class="l2"><span class="word" style="animation-delay:.36s">Dani.</span></span></h1>
+    <p class="roles">Lulusan <strong>Teknik Informatika</strong> yang menjembatani teknologi &amp; komunikasi — <span class="typed" id="typed">Public Relations</span></p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">Lihat Karya
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#contact" class="btn btn-ghost">Mari Berkolaborasi</a>
+    </div>
+  </div>
+  <div class="hero-side">
+    <div class="float-chip c1"><small>IPK · CUM LAUDE</small><span>3,98</span></div>
+    <div class="float-chip c2"><small>JURNAL TERBIT</small><span>SINTA 2</span></div>
+    <div class="float-chip c3"><small>SERTIFIKAT</small><span>HKI ✦</span></div>
+  </div>
+  <div class="scroll-hint"><i></i> Gulir pelan-pelan</div>
+</section>
+
+<div class="marquee"><div class="marquee-track" id="mq">
+  <span>Public Relations</span><span>Content Creator</span><span>Web Developer</span><span>Data Science</span><span>Administrasi</span><span>Desain Visual</span><span>Video Editing</span>
+</div></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="rv">
+      <span class="eyebrow">Tentang Saya</span>
+      <h2>Logika seorang <em>engineer</em>, hati seorang komunikator.</h2>
+      <p class="lead">Lulusan S1 Teknik Informatika Universitas Muhammadiyah Pontianak dengan predikat Cum Laude. Berpengalaman memimpin Departemen Humas BEM FTIK — membangun kerja sama dengan pihak internal maupun eksternal, menyusun korespondensi resmi, dan mengelola konten untuk citra organisasi. Didukung kemampuan analitis, administrasi yang teliti, dan penulisan ilmiah.</p>
+      <div class="stats">
+        <div class="stat"><div class="num"><span data-count="900">0</span><sup>+</sup></div><p>Surat direkap dengan Excel saat magang</p></div>
+        <div class="stat"><div class="num"><span data-count="600">0</span><sup>+</sup></div><p>Dokumen didigitalisasi &amp; diarsipkan</p></div>
+        <div class="stat"><div class="num"><span data-count="1541">0</span></div><p>Suka TikTok dari konten KKU 2025</p></div>
+        <div class="stat"><div class="num"><span data-count="9">0</span></div><p>Program kerja dipimpin &amp; diawasi</p></div>
+      </div>
+    </div>
+    <div class="portrait-wrap rv">
+      <div class="portrait" id="portrait">
+        <div class="layer l-back"></div>
+        <div class="layer l-mid"><img src="img/sinta-wisuda.jpg" alt="Sinta Rama Dani mengenakan kebaya dan medali wisuda"></div>
+        <div class="tag t1"><span class="dot" style="background:#ffe8ef">🎓</span>Cum Laude 2026</div>
+        <div class="tag t2"><span class="dot" style="background:#efe6ff">📍</span>Sukadana, Kayong Utara</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="rv">
+    <span class="eyebrow">Perjalanan</span>
+    <h2>Pengalaman yang <em>membentuk</em> saya.</h2>
+  </div>
+  <div class="tabs rv" id="tabs">
+    <span class="pill" id="pill"></span>
+    <button class="on" data-tab="kerja">Pengalaman Kerja</button>
+    <button data-tab="org">Organisasi</button>
+  </div>
+
+  <div class="timeline panel on" id="p-kerja">
+    <div class="t-item rv"><span class="node">💼</span>
+      <div class="t-card tilt-s">
+        <div class="t-head"><h3>Magang Administrasi</h3><span class="when">Nov 2025 – Jan 2026</span></div>
+        <p class="t-org">Dinas Ketahanan Pangan Provinsi Kalimantan Barat</p>
+        <ul>
+          <li>Merekapitulasi <b>900+ surat</b> menggunakan Microsoft Excel untuk kelancaran administrasi Bagian Sekretariat.</li>
+          <li>Mengelola pengarsipan dan digitalisasi <b>600+ dokumen</b> melalui pemindaian dan arsip elektronik terstruktur.</li>
+          <li>Mengembangkan <b>Sistem Arsip Surat Masuk &amp; Keluar</b> berbasis web dengan 8 fitur utama — telah memperoleh sertifikat HKI.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item rv"><span class="node">🎬</span>
+      <div class="t-card tilt-s">
+        <div class="t-head"><h3>Pengelola Media Sosial &amp; Editor Konten</h3><span class="when">2025</span></div>
+        <p class="t-org">KKU 2025 · Desa Punggur Kecil — Divisi Pubdekdok</p>
+        <ul>
+          <li>Merancang dan mengeksekusi strategi konten Instagram &amp; TikTok: <b>162 pengikut IG</b>, <b>169 pengikut</b> dan <b>1.541 suka</b> di TikTok.</li>
+          <li>Mendesain brosur serta mengedit foto dan konten publikasi kegiatan.</li>
+          <li>Memproduksi video <i>after movie</i> KKU 2025 yang dipublikasikan di YouTube.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline panel" id="p-org">
+    <div class="t-item"><span class="node">📣</span>
+      <div class="t-card tilt-s">
+        <div class="t-head"><h3>Ketua Departemen Humas</h3><span class="when">2024 – 2025</span></div>
+        <p class="t-org">BEM Fakultas Teknik &amp; Ilmu Komputer</p>
+        <ul>
+          <li>Memimpin <b>tim 4 orang</b> merencanakan dan menuntaskan <b>4 program kerja</b> kehumasan.</li>
+          <li>Narahubung utama BEM FTIK untuk komunikasi dan kerja sama internal maupun eksternal.</li>
+          <li>Menyusun korespondensi resmi dan materi publikasi untuk mendukung citra organisasi.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="t-item"><span class="node">⚖️</span>
+      <div class="t-card tilt-s">
+        <div class="t-head"><h3>Anggota Komisi 1 — Legislasi &amp; Pengaturan</h3><span class="when">2025 – 2026</span></div>
+        <p class="t-org">DPM FTIK</p>
+        <ul><li>Mengawasi dan mengevaluasi pelaksanaan <b>5 program kerja</b> lembaga kemahasiswaan agar sesuai regulasi dan target.</li></ul>
+      </div>
+    </div>
+    <div class="t-item"><span class="node">📚</span>
+      <div class="t-card tilt-s">
+        <div class="t-head"><h3>Anggota Bidang Penalaran &amp; Keilmuan</h3><span class="when">2024</span></div>
+        <p class="t-org">Himpunan Mahasiswa Teknik Informatika</p>
+        <ul><li>Berkontribusi merencanakan dan melaksanakan <b>3 kegiatan akademik</b> untuk meningkatkan kapasitas keilmuan mahasiswa.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="rv">
+    <span class="eyebrow">Karya Pilihan</span>
+    <h2>Proyek yang saya <em>rawat</em> dengan sepenuh hati.</h2>
+    <p class="lead">Klik kartu untuk melihat detail. Arahkan kursor untuk efek 3D.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj wide rv" data-modal="arsip">
+      <div class="proj-inner tilt"><span class="shine"></span><span class="open-ic">↗</span>
+        <div class="mock m-arsip">
+          <span class="hki">🏅 Bersertifikat HKI</span>
+          <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="img/arsip-dashboard.jpg" alt="Dashboard Arsipin"></div>
+        </div>
+        <div class="proj-body"><span class="kicker">Web App · 2026</span><h3>Arsipin — Sistem Arsip Surat Masuk &amp; Keluar</h3>
+          <p>Sistem pengarsipan berbasis web dengan 8 fitur utama untuk Dinas Ketahanan Pangan Kalbar, tercatat sebagai ciptaan HKI.</p>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">MySQL</span></div></div>
+      </div>
+    </div>
+    <div class="proj narrow rv" data-modal="kasir">
+      <div class="proj-inner tilt"><span class="shine"></span><span class="open-ic">↗</span>
+        <div class="mock m-kasir">
+          <div class="web-behind"><img src="img/salad-web-menu.jpg" alt="Website Salad Mertua"></div>
+          <div class="phone-real"><img src="img/salad-mertua.jpg" alt="Tampilan beranda aplikasi Salad Mertua"></div>
+          <span class="fchip" style="top:10%;right:7%;transform:rotate(6deg)">🎨 Didesain di Figma</span>
+          <span class="fchip" style="bottom:22%;right:8%;transform:rotate(5deg)">⛅ Info cuaca live</span>
+        </div>
+        <div class="proj-body"><span class="kicker">Mobile &amp; Website · UMKM</span><h3>Aplikasi Kasir Salad Mertua</h3>
+          <p>Aplikasi kasir untuk pencatatan transaksi, desain UI di Figma, plus website promosi produk.</p>
+          <div class="chips"><span class="chip">Mobile</span><span class="chip">Website</span><span class="chip">UI/UX · Figma</span><span class="chip">UMKM</span></div></div>
+      </div>
+    </div>
+    <div class="proj narrow rv" data-modal="riset">
+      <div class="proj-inner tilt"><span class="shine"></span><span class="open-ic">↗</span>
+        <div class="mock m-riset">
+          <span class="sinta2">SINTA 2 ✦</span><div class="paper"><img src="img/jurnal.jpg" alt="Halaman pertama artikel jurnal JINITA"></div>
+        </div>
+        <div class="proj-body"><span class="kicker">Riset · Jurnal JINITA (SINTA 2)</span><h3>Prediksi Waktu Tanam Padi SARIMA-MFEP</h3>
+          <p>Tugas akhir yang terbit di jurnal nasional terakreditasi SINTA 2.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">SARIMA</span><span class="chip">MFEP</span></div></div>
+      </div>
+    </div>
+    <div class="proj wide rv" data-modal="kku">
+      <div class="proj-inner tilt"><span class="shine"></span><span class="open-ic" style="color:var(--ink)">↗</span>
+        <div class="mock m-video">
+          <div class="reel"><div></div><div></div><div></div></div>
+          <a class="play" href="https://youtu.be/JY3fi4XF7DM" target="_blank" rel="noopener" aria-label="Tonton after movie di YouTube" onclick="event.stopPropagation()"><svg width="22" height="22" viewBox="0 0 24 24" fill="#cf4f7c"><path d="M8 5v14l11-7z"/></svg></a>
+          <div class="socials"><span>Instagram</span><span>TikTok</span><span>YouTube</span></div>
+        </div>
+        <div class="proj-body"><span class="kicker">Konten &amp; Video · 2025</span><h3>Kampanye Konten &amp; After Movie KKU 2025</h3>
+          <p>Strategi konten Instagram &amp; TikTok, desain brosur, dan produksi video after movie — klik ▶ untuk menonton.</p>
+          <div class="chips"><span class="chip">CapCut</span><span class="chip">Canva</span><span class="chip">Photoshop</span><span class="chip">Social Media</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="rv">
+    <span class="eyebrow">Keahlian</span>
+    <h2>Perpaduan <em>kreatif</em> &amp; teknis.</h2>
+  </div>
+  <div class="skills-wrap">
+    <div class="orbit rv" id="orbit">
+      <div class="ring r2"></div><div class="ring r1"></div>
+      <div class="core">Toolkit<br>Sinta</div>
+    </div>
+    <div class="skill-groups rv">
+      <details class="sg" open><summary><span class="ic" style="background:#ffe8ef">💬</span>Komunikasi &amp; Relasi<span class="pl">+</span></summary>
+        <div class="content"><span class="chip">Korespondensi resmi</span><span class="chip">Koordinasi kegiatan</span><span class="chip">Kerja sama internal &amp; eksternal</span></div></details>
+      <details class="sg"><summary><span class="ic" style="background:#efe6ff">📱</span>Media Sosial &amp; Konten<span class="pl">+</span></summary>
+        <div class="content"><span class="chip">Pengelolaan akun</span><span class="chip">Perencanaan konten</span><span class="chip">Pembuatan konten</span><span class="chip">Dokumentasi kegiatan</span></div></details>
+      <details class="sg"><summary><span class="ic" style="background:#ffeadf">🎨</span>Desain &amp; Editing<span class="pl">+</span></summary>
+        <div class="content"><span class="chip">Canva</span><span class="chip">CapCut</span><span class="chip">Adobe Photoshop</span><span class="chip">Figma</span><span class="chip">Editing foto &amp; video</span><span class="chip">Desain brosur</span></div></details>
+      <details class="sg"><summary><span class="ic" style="background:#e4f7ef">💻</span>Administrasi &amp; Teknis<span class="pl">+</span></summary>
+        <div class="content"><span class="chip">Excel</span><span class="chip">Word</span><span class="chip">PowerPoint</span><span class="chip">Google Docs &amp; Sheets</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">MySQL</span></div></details>
+      <details class="sg"><summary><span class="ic" style="background:#fff3d9">🌏</span>Bahasa<span class="pl">+</span></summary>
+        <div class="content"><span class="chip">Indonesia — aktif</span><span class="chip">Inggris — terus berkembang</span></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="rv">
+    <span class="eyebrow">Pendidikan &amp; Pencapaian</span>
+    <h2>Belajar tanpa <em>henti</em>.</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card rv" id="edu">
+      <span class="cum">✦ Cum Laude</span>
+      <h3>Universitas Muhammadiyah Pontianak</h3>
+      <p style="opacity:.8">S1 Teknik Informatika · Sep 2022 – Apr 2026</p>
+      <div class="gpa"><b>3,98</b><small>/ 4,00 IPK</small></div>
+      <div class="gpa-bar"><i id="gpabar"></i></div>
+      <p class="thesis">Tugas Akhir<em>Rice Planting Time Prediction Using SARIMA-MFEP Integration in Kubu Raya</em></p>
+    </div>
+    <div class="certs">
+      <div class="cert rv"><span class="medal">📄</span><div><h4>Publikasi Jurnal JINITA (SINTA 2)</h4><p>2026 · Rice Planting Time Prediction Using SARIMA-MFEP</p></div></div>
+      <div class="cert rv clickable" data-lb="img/hki.jpg" data-cap="Surat Pencatatan Ciptaan — Arsipin · No. 001091892"><span class="medal">🏅</span><div><h4>Sertifikat HKI — Arsipin (Sistem Arsip Surat)</h4><p>Januari 2026 · No. Pencatatan 001091892</p></div><span class="see">Lihat ↗</span></div>
+      <div class="cert rv"><span class="medal">🏛️</span><div><h4>Sertifikat Magang — Dinas Ketahanan Pangan Kalbar</h4><p>Januari 2026</p></div></div>
+      <div class="cert rv"><span class="medal">📊</span><div><h4>Dicoding &amp; Microsoft: Penerapan Data Science dengan Microsoft Fabric</h4><p>Agustus 2026</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact rv">
+    <span class="bubble" style="width:120px;height:120px;top:-30px;left:6%"></span>
+    <span class="bubble" style="width:70px;height:70px;bottom:30px;right:8%;animation-delay:-3s"></span>
+    <span class="bubble" style="width:40px;height:40px;top:40%;right:20%;animation-delay:-5s"></span>
+    <div class="avatar"><img src="img/sinta-cafe.jpg" alt="Foto Sinta Rama Dani"></div>
+    <span class="eyebrow">Kontak</span>
+    <h2>Mari bangun <em>sesuatu yang indah</em> bersama.</h2>
+    <p class="lead">Terbuka untuk peluang di bidang humas, kemitraan, administrasi, konten kreatif, maupun pengembangan web.</p>
+    <div class="c-list">
+      <div class="c-item">✉️ sintarmadaniii@gmail.com <button data-copy="sintarmadaniii@gmail.com">Salin</button></div>
+      <div class="c-item">📞 0857-5171-8947 <button data-copy="085751718947">Salin</button></div>
+      <div class="c-item"><a href="https://linkedin.com/in/sinta-ramadani-266ab9368" target="_blank" rel="noopener">in&nbsp; LinkedIn</a> <button data-copy="linkedin.com/in/sinta-ramadani-266ab9368">Salin</button></div>
+    </div>
+  </div>
+</section>
+<footer>© 2026 Sinta Rama Dani · Dibuat dengan ✦ dan secangkir teh</footer>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="x" id="mx" aria-label="Tutup">×</button><div id="mc"></div></div></div>
+<div class="lightbox" id="lb"><img id="lbi" alt=""><p id="lbc"></p></div>
+<div class="toast" id="toast">Tersalin ✦</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- THREE.JS HERO ---------- */
+(function(){
+  if(!window.THREE) return;
+  const host = document.getElementById('scene');
+  const renderer = new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  host.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35,1,.1,100);
+  camera.position.set(0,0,14);
+
+  // soft pastel environment for pearly reflections
+  const envScene = new THREE.Scene();
+  const envGeo = new THREE.SphereGeometry(10,32,16);
+  const cols=[]; const c=new THREE.Color(); const pos=envGeo.attributes.position;
+  for(let i=0;i<pos.count;i++){
+    const y=pos.getY(i)/10, x=pos.getX(i)/10;
+    c.setRGB(1, .78+.12*y, .86+.1*x).lerp(new THREE.Color(0xd8c8ff), Math.max(0,-y)*.8);
+    if(y>.6) c.lerp(new THREE.Color(0xffffff),(y-.6)*2.2);
+    cols.push(c.r,c.g,c.b);
+  }
+  envGeo.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+  envScene.add(new THREE.Mesh(envGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide})));
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(envScene,.04).texture;
+
+  scene.add(new THREE.AmbientLight(0xffffff,.35));
+  const key = new THREE.DirectionalLight(0xffffff,1.2); key.position.set(4,6,6); scene.add(key);
+  const rim = new THREE.PointLight(0xff8fb8,2.2,30); rim.position.set(-6,-2,4); scene.add(rim);
+  const rim2 = new THREE.PointLight(0xa98bff,2,30); rim2.position.set(6,-4,2); scene.add(rim2);
+
+  const pearl = (color,rough=.18)=>new THREE.MeshPhysicalMaterial({color,roughness:rough,metalness:.15,clearcoat:1,clearcoatRoughness:.08});
+
+  const group = new THREE.Group(); scene.add(group);
+  const items=[];
+  function add(mesh,x,y,z,speed){mesh.position.set(x,y,z);mesh.userData={y0:y,s:speed,ph:Math.random()*6};group.add(mesh);items.push(mesh);return mesh;}
+
+  add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.5,.5,220,32,2,3),pearl(0xffc3d6,.12)),2.6,.4,0,.6);
+  add(new THREE.Mesh(new THREE.SphereGeometry(1.15,64,64),pearl(0xcbb8ff,.08)),-.4,-2.4,1,.8);
+  add(new THREE.Mesh(new THREE.TorusGeometry(.9,.32,40,90),pearl(0xffd2bf,.15)),5.4,-2.6,-1,1);
+  add(new THREE.Mesh(new THREE.IcosahedronGeometry(.6,0),pearl(0xffffff,.05)),.6,2.9,-1,1.2);
+  add(new THREE.Mesh(new THREE.SphereGeometry(.4,48,48),pearl(0xff9fbe,.1)),5.6,2.6,0,1.4);
+
+  // heart
+  const hs = new THREE.Shape();
+  hs.moveTo(0,.5);hs.bezierCurveTo(0,.8,-.5,1,-.75,.75);hs.bezierCurveTo(-1.1,.4,-.8,0,0,-.6);
+  hs.bezierCurveTo(.8,0,1.1,.4,.75,.75);hs.bezierCurveTo(.5,1,0,.8,0,.5);
+  const hg = new THREE.ExtrudeGeometry(hs,{depth:.25,bevelEnabled:true,bevelSegments:8,bevelSize:.18,bevelThickness:.2,curveSegments:32});
+  hg.center();
+  const heart = add(new THREE.Mesh(hg,pearl(0xf28aad,.1)),-2.4,1.4,-.5,.9); heart.scale.setScalar(.8);
+
+  // sparkles
+  const sg=new THREE.BufferGeometry(); const sp=[];
+  for(let i=0;i<160;i++) sp.push((Math.random()-.5)*20,(Math.random()-.5)*12,(Math.random()-.5)*8-2);
+  sg.setAttribute('position',new THREE.Float32BufferAttribute(sp,3));
+  const dot=document.createElement('canvas');dot.width=dot.height=32;const g=dot.getContext('2d');
+  const rg=g.createRadialGradient(16,16,0,16,16,16);rg.addColorStop(0,'rgba(255,255,255,1)');rg.addColorStop(.4,'rgba(255,190,215,.8)');rg.addColorStop(1,'rgba(255,190,215,0)');
+  g.fillStyle=rg;g.fillRect(0,0,32,32);
+  const stars=new THREE.Points(sg,new THREE.PointsMaterial({size:.18,map:new THREE.CanvasTexture(dot),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
+  scene.add(stars);
+
+  let mx=0,my=0,tx=0,ty=0,scrollY=0;
+  addEventListener('pointermove',e=>{mx=(e.clientX/innerWidth-.5);my=(e.clientY/innerHeight-.5);});
+  addEventListener('scroll',()=>{scrollY=window.scrollY},{passive:true});
+
+  // drag to spin
+  let drag=false,lx=0,spin=0;
+  host.style.pointerEvents='auto';
+  host.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX});
+  addEventListener('pointerup',()=>drag=false);
+  addEventListener('pointermove',e=>{if(drag){spin+=(e.clientX-lx)*.005;lx=e.clientX}});
+
+  function resize(){
+    const w=host.clientWidth,h=host.clientHeight;
+    renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();
+    group.position.x = w<900 ? -1.5 : 1.2;
+    group.scale.setScalar(w<900?.62:1);
+  }
+  addEventListener('resize',resize);resize();
+
+  const clock=new THREE.Clock();
+  (function loop(){
+    const t=clock.getElapsedTime();
+    tx+=(mx-tx)*.05;ty+=(my-ty)*.05;
+    group.rotation.y = tx*.6 + spin; group.rotation.x = ty*.35;
+    spin*=.97;
+    items.forEach((m,i)=>{
+      const d=m.userData;
+      if(!reduce){m.position.y=d.y0+Math.sin(t*d.s+d.ph)*.25;m.rotation.x+=.003*d.s;m.rotation.y+=.005*d.s;}
+    });
+    if(!reduce) stars.rotation.y=t*.02;
+    camera.position.y = -scrollY*.004;
+    renderer.render(scene,camera);
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- cursor glow ---------- */
+const glow=document.getElementById('glow');
+addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
+
+/* ---------- typed roles ---------- */
+(function(){
+  const words=['Public Relations','Content Creator','Web Developer','Administrasi Digital','Data Enthusiast'];
+  const el=document.getElementById('typed'); if(reduce) return;
+  let w=0,i=words[0].length,del=true;
+  setTimeout(function tick(){
+    const word=words[w];
+    i+=del?-1:1; el.textContent=word.slice(0,i);
+    let d=del?45:85;
+    if(!del&&i===word.length){del=true;d=1800}
+    else if(del&&i===0){del=false;w=(w+1)%words.length;d=300}
+    setTimeout(tick,d);
+  },2000);
+})();
+
+/* marquee duplicate */
+const mq=document.getElementById('mq'); mq.innerHTML+=mq.innerHTML;
+
+/* ---------- reveal + counters ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(n=>{
+    const to=+n.dataset.count,st=performance.now(),dur=1600;
+    (function f(now){const p=Math.min(1,(now-st)/dur),v=Math.round(to*(1-Math.pow(1-p,3)));n.textContent=v.toLocaleString('id-ID');if(p<1)requestAnimationFrame(f)})(st);
+  });
+  if(e.target.id==='edu') document.getElementById('gpabar').style.width=(3.98/4*100)+'%';
+  io.unobserve(e.target);
+}),{threshold:.18});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+
+/* ---------- nav active ---------- */
+const links=[...document.querySelectorAll('nav a[href^="#"]')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id&&!l.classList.contains('cta')))}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+
+/* ---------- tabs ---------- */
+const tabs=document.getElementById('tabs'),pill=document.getElementById('pill');
+function placePill(b){pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px'}
+tabs.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+  tabs.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));placePill(b);
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.tab));
+}));
+addEventListener('load',()=>placePill(tabs.querySelector('.on')));placePill(tabs.querySelector('.on'));
+addEventListener('resize',()=>placePill(tabs.querySelector('.on')));
+
+/* ---------- 3D tilt ---------- */
+function tilt(el,max){
+  el.addEventListener('pointermove',e=>{
+    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    el.style.transform=`rotateY(${(x-.5)*max}deg) rotateX(${(.5-y)*max}deg) translateZ(0)`;
+    el.style.setProperty('--mx',x*100+'%');el.style.setProperty('--my',y*100+'%');
+  });
+  el.addEventListener('pointerleave',()=>{el.style.transform=''});
+}
+if(!reduce){
+  document.querySelectorAll('.tilt').forEach(el=>tilt(el,14));
+  document.querySelectorAll('.tilt-s').forEach(el=>tilt(el,5));
+  tilt(document.getElementById('portrait'),18);
+}
+
+/* ---------- skills orbit ---------- */
+(function(){
+  const inner=['Canva','Figma','CapCut','Photoshop','Excel'], outer=['HTML','CSS','JavaScript','Python','MySQL','Humas','Konten','Google Sheets'];
+  const place=(ring,arr)=>arr.forEach((t,i)=>{const a=i/arr.length*Math.PI*2,s=document.createElement('span');s.textContent=t;s.style.left=50+50*Math.cos(a)+'%';s.style.top=50+50*Math.sin(a)+'%';ring.appendChild(s)});
+  place(document.querySelector('.ring.r1'),inner);place(document.querySelector('.ring.r2'),outer);
+})();
+
+/* ---------- modal ---------- */
+const YT='https://youtu.be/JY3fi4XF7DM';
+const DATA={
+  arsip:{k:'Web App · HKI · 2026',t:'Arsipin — Arsip Surat Masuk & Surat Keluar',d:'Dikembangkan saat magang di Dinas Ketahanan Pangan Provinsi Kalimantan Barat untuk menata administrasi Bagian Sekretariat.',l:['Kelola surat masuk & keluar: input, daftar, edit, hapus, dan pencarian','Alur disposisi Kepala Dinas dan bidang dengan status tindak lanjut','Kode klasifikasi surat, statistik per tahun, dan ekspor ke Excel'],meta:'Tercatat sebagai ciptaan Program Komputer · No. Pencatatan 001091892 · 22 Januari 2026 · Pemegang hak cipta: LP3M Universitas Muhammadiyah Pontianak',gal:[['img/arsip-dashboard.jpg','Dashboard Arsip Surat'],['img/arsip-surat-masuk.jpg','Daftar Surat Masuk & disposisi'],['img/hki.jpg','Surat Pencatatan Ciptaan (HKI)',1]]},
+  kasir:{k:'Mobile & Website · UI/UX · UMKM',t:'Aplikasi Kasir Salad Mertua',d:'Aplikasi kasir dan website untuk Salad Mertua, UMKM minuman dan makanan di Pontianak sejak 2017 — dirancang dari desain UI di Figma hingga aplikasi yang berjalan.',l:['Aplikasi mobile: widget cuaca Pontianak, Menu, Maps, Sosmed, Riwayat, dan keranjang pesanan','Desain UI Figma: halaman Beranda, Menu, Order, dan Checkout dengan color scheme khusus','Website promosi: halaman Menu, Minuman & Desserts, About Us, Outlet, dan Fasilitas'],gal:[['img/salad-mertua.jpg','Aplikasi mobile — Beranda',1],['img/salad-figma.jpg','Desain UI di Figma'],['img/salad-web-menu.jpg','Website — Minuman & Desserts'],['img/salad-web-about.jpg','Website — Sejarah Salad Mertua']]},
+  riset:{k:'Riset · JINITA (SINTA 2) · 2026',t:'Rice Planting Time Prediction Using SARIMA-MFEP Integration in Kubu Raya',d:'Mengintegrasikan peramalan iklim SARIMA (curah hujan, suhu, kelembapan) dengan evaluasi multi-kriteria MFEP untuk merekomendasikan waktu tanam padi bagi petani di Kubu Raya.',l:['MAPE di bawah 2% untuk prediksi suhu dan kelembapan','Menangkap 68% variabilitas curah hujan musiman','Oktober teridentifikasi sebagai bulan tanam paling optimal'],gal:[['img/jurnal.jpg','Halaman pertama artikel JINITA']],meta:'Sinta Rama Dani, Syarifah Putri Agustini Alkadri, Sucipto · JINITA vol. 8 no. 1, hlm. 263–276, Juni 2026',link:['https://ejournal.pnc.ac.id/index.php/jinita','Buka Jurnal JINITA']},
+  kku:{k:'Konten & Video · 2025',t:'Kampanye Konten & After Movie KKU 2025',d:'Sebagai anggota Divisi Pubdekdok KKU 2025 di Desa Punggur Kecil, mengelola publikasi kegiatan dari perencanaan hingga produksi.',l:['Instagram: 162 pengikut','TikTok: 169 pengikut & 1.541 suka','Desain brosur, editing foto, dan video after movie di YouTube'],link:[YT,'▶ Tonton After Movie']}
+};
+const modal=document.getElementById('modal'),mc=document.getElementById('mc');
+document.querySelectorAll('[data-modal]').forEach(p=>p.addEventListener('click',()=>{
+  const d=DATA[p.dataset.modal];
+  mc.innerHTML=`<span class="eyebrow">${d.k}</span><h3>${d.t}</h3><p>${d.d}</p><ul>${d.l.map(x=>`<li>${x}</li>`).join('')}</ul>${d.meta?`<p class="meta">${d.meta}</p>`:''}${d.gal?`<div class="gallery">${d.gal.map(g=>`<figure class="${g[2]?'tall':''}" data-lb="${g[0]}" data-cap="${g[1]}"><img src="${g[0]}" alt="${g[1]}"><figcaption>${g[1]}</figcaption></figure>`).join('')}</div>`:''}${d.link?`<a class="btn btn-primary" href="${d.link[0]}" target="_blank" rel="noopener">${d.link[1]} ↗</a>`:''}${d.note?`<p class="note">✦ ${d.note}</p>`:''}`;
+  modal.classList.add('on');
+}));
+const lb=document.getElementById('lb');
+document.addEventListener('click',e=>{const t=e.target.closest('[data-lb]');if(!t)return;document.getElementById('lbi').src=t.dataset.lb;document.getElementById('lbc').textContent=t.dataset.cap||'';lb.classList.add('on')});
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+const close=()=>{if(lb.classList.contains('on')){lb.classList.remove('on');return}modal.classList.remove('on')};
+document.getElementById('mx').onclick=close;
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('on')});
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+
+/* ---------- copy ---------- */
+const toast=document.getElementById('toast');
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(b.dataset.copy);toast.textContent='Tersalin ✦'}catch(e){toast.textContent=b.dataset.copy}
+  toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);
+}));
+</script>
+</body>
+</html>
