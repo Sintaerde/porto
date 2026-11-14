@@ -40,7 +40,7 @@ export const profile = {
   name: 'Sinta Rama Dani',
   badge: { status: 'Open to work', text: 'Kalimantan Barat · Remote / Onsite' },
   nameLines: [['Sinta', 'Rama'], ['Dani.']],
-  intro: { prefix: 'Lulusan', strong: 'Teknik Informatika', suffix: 'yang menjembatani teknologi & komunikasi —' },
+  intro: { prefix: 'Lulusan', strong: 'Teknik Informatika', suffix: 'yang menjembatani teknologi & komunikasi:' },
   roles: ['Public Relations', 'Content Creator', 'Web Developer', 'Administrasi Digital', 'Data Enthusiast'],
   actions: { primary: { label: 'Lihat Karya', href: '#projects' }, ghost: { label: 'Mari Berkolaborasi', href: '#contact' } },
   chips: [
@@ -59,7 +59,7 @@ export const about = {
   eyebrow: 'Tentang Saya',
   title: ['Logika seorang ', 'engineer', ', hati seorang komunikator.'] as const,
   lead:
-    'Lulusan S1 Teknik Informatika Universitas Muhammadiyah Pontianak dengan predikat Cum Laude. Berpengalaman memimpin Departemen Humas BEM FTIK — membangun kerja sama dengan pihak internal maupun eksternal, menyusun korespondensi resmi, dan mengelola konten untuk citra organisasi. Didukung kemampuan analitis, administrasi yang teliti, dan penulisan ilmiah.',
+    'Lulusan S1 Teknik Informatika Universitas Muhammadiyah Pontianak dengan predikat Cum Laude. Berpengalaman memimpin Departemen Humas BEM FTIK, membangun kerja sama dengan pihak internal maupun eksternal, menyusun korespondensi resmi, dan mengelola konten untuk citra organisasi. Didukung kemampuan analitis, administrasi yang teliti, dan penulisan ilmiah.',
   stats: [
     { value: 900, plus: true, label: 'Surat direkap dengan Excel saat magang' },
     { value: 600, plus: true, label: 'Dokumen didigitalisasi & diarsipkan' },
@@ -103,14 +103,14 @@ export const experience = {
           points: [
             'Merekapitulasi **900+ surat** menggunakan Microsoft Excel untuk kelancaran administrasi Bagian Sekretariat.',
             'Mengelola pengarsipan dan digitalisasi **600+ dokumen** melalui pemindaian dan arsip elektronik terstruktur.',
-            'Mengembangkan **Sistem Arsip Surat Masuk & Keluar** berbasis web dengan 8 fitur utama — telah memperoleh sertifikat HKI.',
+            'Mengembangkan **Sistem Arsip Surat Masuk & Keluar** berbasis web dengan 8 fitur utama, dan telah memperoleh sertifikat HKI.',
           ],
         },
         {
           icon: '🎬',
           title: 'Pengelola Media Sosial & Editor Konten',
           when: '2025',
-          org: 'KKU 2025 · Desa Punggur Kecil — Divisi Pubdekdok',
+          org: 'KKU 2025 · Desa Punggur Kecil · Divisi Pubdekdok',
           points: [
             'Merancang dan mengeksekusi strategi konten Instagram & TikTok: **162 pengikut IG**, **169 pengikut** dan **1.541 suka** di TikTok.',
             'Mendesain brosur serta mengedit foto dan konten publikasi kegiatan.',
@@ -136,7 +136,7 @@ export const experience = {
         },
         {
           icon: '⚖️',
-          title: 'Anggota Komisi 1 — Legislasi & Pengaturan',
+          title: 'Anggota Komisi 1: Legislasi & Pengaturan',
           when: '2025 – 2026',
           org: 'DPM FTIK',
           points: ['Mengawasi dan mengevaluasi pelaksanaan **5 program kerja** lembaga kemahasiswaan agar sesuai regulasi dan target.'],
@@ -191,12 +191,12 @@ export const projects = {
       id: 'arsip',
       size: 'wide',
       kicker: 'Web App · 2026',
-      title: 'Arsipin — Sistem Arsip Surat Masuk & Keluar',
+      title: 'Arsipin: Sistem Arsip Surat Masuk & Keluar',
       summary: 'Sistem pengarsipan berbasis web dengan 8 fitur utama untuk Dinas Ketahanan Pangan Kalbar, tercatat sebagai ciptaan HKI.',
       chips: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
       modal: {
         kicker: 'Web App · HKI · 2026',
-        title: 'Arsipin — Arsip Surat Masuk & Surat Keluar',
+        title: 'Arsipin: Arsip Surat Masuk & Surat Keluar',
         description: 'Dikembangkan saat magang di Dinas Ketahanan Pangan Provinsi Kalimantan Barat untuk menata administrasi Bagian Sekretariat.',
         points: [
           'Kelola surat masuk & keluar: input, daftar, edit, hapus, dan pencarian',
@@ -221,17 +221,17 @@ export const projects = {
       modal: {
         kicker: 'Mobile & Website · UI/UX · UMKM',
         title: 'Aplikasi Kasir Salad Mertua',
-        description: 'Aplikasi kasir dan website untuk Salad Mertua, UMKM minuman dan makanan di Pontianak sejak 2017 — dirancang dari desain UI di Figma hingga aplikasi yang berjalan.',
+        description: 'Aplikasi kasir dan website untuk Salad Mertua, UMKM minuman dan makanan di Pontianak sejak 2017, dirancang dari desain UI di Figma hingga aplikasi yang berjalan.',
         points: [
           'Aplikasi mobile: widget cuaca Pontianak, Menu, Maps, Sosmed, Riwayat, dan keranjang pesanan',
           'Desain UI Figma: halaman Beranda, Menu, Order, dan Checkout dengan color scheme khusus',
           'Website promosi: halaman Menu, Minuman & Desserts, About Us, Outlet, dan Fasilitas',
         ],
         gallery: [
-          { img: img.saladMobile, caption: 'Aplikasi mobile — Beranda', tall: true },
+          { img: img.saladMobile, caption: 'Aplikasi mobile: Beranda', tall: true },
           { img: img.saladFigma, caption: 'Desain UI di Figma' },
-          { img: img.saladMenu, caption: 'Website — Minuman & Desserts' },
-          { img: img.saladAbout, caption: 'Website — Sejarah Salad Mertua' },
+          { img: img.saladMenu, caption: 'Website: Minuman & Desserts' },
+          { img: img.saladAbout, caption: 'Website: Sejarah Salad Mertua' },
         ],
       },
     },
@@ -261,7 +261,7 @@ export const projects = {
       size: 'wide',
       kicker: 'Konten & Video · 2025',
       title: 'Kampanye Konten & After Movie KKU 2025',
-      summary: 'Strategi konten Instagram & TikTok, desain brosur, dan produksi video after movie — klik ▶ untuk menonton.',
+      summary: 'Strategi konten Instagram & TikTok, desain brosur, dan produksi video after movie. Klik ▶ untuk menonton.',
       chips: ['CapCut', 'Canva', 'Photoshop', 'Social Media'],
       modal: {
         kicker: 'Konten & Video · 2025',
@@ -293,7 +293,7 @@ export const skills = {
     { icon: '📱', bg: '#efe6ff', title: 'Media Sosial & Konten', items: ['Pengelolaan akun', 'Perencanaan konten', 'Pembuatan konten', 'Dokumentasi kegiatan'] },
     { icon: '🎨', bg: '#ffeadf', title: 'Desain & Editing', items: ['Canva', 'CapCut', 'Adobe Photoshop', 'Figma', 'Editing foto & video', 'Desain brosur'] },
     { icon: '💻', bg: '#e4f7ef', title: 'Administrasi & Teknis', items: ['Excel', 'Word', 'PowerPoint', 'Google Docs & Sheets', 'HTML', 'CSS', 'JavaScript', 'Python', 'MySQL'] },
-    { icon: '🌏', bg: '#fff3d9', title: 'Bahasa', items: ['Indonesia — aktif', 'Inggris — terus berkembang'] },
+    { icon: '🌏', bg: '#fff3d9', title: 'Bahasa', items: ['Indonesia (aktif)', 'Inggris (terus berkembang)'] },
   ] satisfies SkillGroup[],
 }
 
@@ -322,16 +322,16 @@ export const education = {
     { icon: '📄', title: 'Publikasi Jurnal JINITA (SINTA 2)', detail: '2026 · Rice Planting Time Prediction Using SARIMA-MFEP' },
     {
       icon: '🏅',
-      title: 'Sertifikat HKI — Arsipin (Sistem Arsip Surat)',
+      title: 'Sertifikat HKI: Arsipin (Sistem Arsip Surat)',
       detail: 'Januari 2026 · No. Pencatatan 001091892',
-      lightbox: { img: img.hki, caption: 'Surat Pencatatan Ciptaan — Arsipin · No. 001091892' },
+      lightbox: { img: img.hki, caption: 'Surat Pencatatan Ciptaan: Arsipin · No. 001091892' },
     },
-    { icon: '🏛️', title: 'Sertifikat Magang — Dinas Ketahanan Pangan Kalbar', detail: 'Januari 2026' },
+    { icon: '🏛️', title: 'Sertifikat Magang: Dinas Ketahanan Pangan Kalbar', detail: 'Januari 2026' },
     {
       icon: '📊',
       title: 'Dicoding & Microsoft: Penerapan Data Science dengan Microsoft Fabric',
       detail: '28 Agustus 2026',
-      lightbox: { img: img.certDicoding, caption: 'Sertifikat Kompetensi Kelulusan Dicoding — Belajar Penerapan Data Science dengan Microsoft Fabric' },
+      lightbox: { img: img.certDicoding, caption: 'Sertifikat Kompetensi Kelulusan Dicoding: Belajar Penerapan Data Science dengan Microsoft Fabric' },
     },
     {
       icon: '🎓',

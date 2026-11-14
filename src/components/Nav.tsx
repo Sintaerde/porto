@@ -24,7 +24,7 @@ export function Nav() {
 
   return (
     <nav className="nav" aria-label="Navigasi utama">
-      <a href="#hero" className="logo" aria-label="Sinta Rama Dani — kembali ke atas">
+      <a href="#hero" className="logo" aria-label="Sinta Rama Dani, kembali ke atas">
         S
       </a>
       {nav.links.map((l) => (

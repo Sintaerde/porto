@@ -1,6 +1,6 @@
 # Portofolio Sinta Rama Dani
 
-Website portofolio satu halaman (feminin, modern, 3D) — Vite + React + TypeScript + Tailwind CSS + React Three Fiber + Framer Motion. Hasil build berupa situs statis.
+Website portofolio satu halaman (feminin, modern, 3D). Dibangun dengan Vite + React + TypeScript + Tailwind CSS + React Three Fiber + Framer Motion. Hasil build berupa situs statis.
 
 ## Menjalankan secara lokal
 
