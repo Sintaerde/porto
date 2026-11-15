@@ -25,15 +25,9 @@ jobs:
 
       - run: npm ci
 
-      # base otomatis dari nama repo: /nama-repo/ (atau / bila repo bernama <user>.github.io).
-      # Pakai custom domain? Ubah baris ini menjadi: echo "VITE_BASE=/" >> "$GITHUB_ENV"
+      # Custom domain (sintaerde.my.id, lihat public/CNAME) dilayani dari root, jadi base = /
       - name: Tentukan base path
-        run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          case "$REPO" in
-            *.github.io) echo "VITE_BASE=/" >> "$GITHUB_ENV" ;;
-            *) echo "VITE_BASE=/${REPO}/" >> "$GITHUB_ENV" ;;
-          esac
+        run: echo "VITE_BASE=/" >> "$GITHUB_ENV"
 
       - name: Konfigurasi identitas Git
         env:
