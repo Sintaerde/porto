@@ -36,9 +36,7 @@ Deploy berjalan otomatis lewat GitHub Actions ([`.github/workflows/deploy.yml`](
 
 ### Base path
 
-Workflow mengisi `VITE_BASE` otomatis dari nama repo (`/nama-repo/`), atau `/` bila repo bernama `<username>.github.io`. Untuk build lokal biasa, `base` adalah `/`.
-
-**Memakai custom domain?** Ubah langkah "Tentukan base path" di `deploy.yml` menjadi `echo "VITE_BASE=/" >> "$GITHUB_ENV"`, lalu atur domain di Settings → Pages.
+Base default berupa path relatif (`./`), jadi hasil build berjalan di subpath mana pun (mis. `/porto/`), baik dari GitHub Actions maupun `npm run deploy` di komputer sendiri. Workflow tetap mengisi `VITE_BASE` secara eksplisit dari nama repo. Untuk custom domain tidak perlu pengaturan khusus.
 
 Untuk mencoba build seperti di Pages secara lokal:
 
