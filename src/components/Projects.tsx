@@ -48,11 +48,18 @@ const mocks: Record<Project['id'], ReactNode> = {
   ),
   kku: (
     <div className="mock m-video">
-      <div className="reel" aria-hidden="true">
-        <div />
-        <div />
-        <div />
-      </div>
+      <img
+        className="yt-cover"
+        src={`https://i.ytimg.com/vi/${youtube.id}/maxresdefault.jpg`}
+        alt="Thumbnail video after movie KKU 2025"
+        loading="lazy"
+        decoding="async"
+        onError={(e) => {
+          const el = e.currentTarget
+          const fallback = `https://i.ytimg.com/vi/${youtube.id}/hqdefault.jpg`
+          if (el.src !== fallback) el.src = fallback
+        }}
+      />
       <a className="play" href={youtube.url} target="_blank" rel="noopener noreferrer" aria-label="Tonton after movie KKU 2025 di YouTube (tab baru)">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#cf4f7c" aria-hidden="true">
           <path d="M8 5v14l11-7z" />
