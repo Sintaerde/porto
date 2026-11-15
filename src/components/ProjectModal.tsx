@@ -65,9 +65,7 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
         exit={{ y: 30, scale: 0.96, opacity: 0 }}
         transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
       >
-        <button type="button" className="x" onClick={onClose} aria-label="Tutup detail proyek">
-          ×
-        </button>
+        <button type="button" className="x" onClick={onClose} aria-label="Tutup detail proyek"><span className="x-ic" aria-hidden="true" /></button>
         <span className="eyebrow">{d.kicker}</span>
         <h3 id={titleId}>{d.title}</h3>
         <p>{d.description}</p>

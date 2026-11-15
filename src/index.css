@@ -260,7 +260,16 @@
 .sg h3 > button { width: 100%; text-align: left; color: inherit; border: 0; background: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 18px 22px; font-weight: 600; font-size: 16px; }
 .sg .ic { width: 40px; height: 40px; border-radius: 14px; display: grid; place-items: center; font-size: 18px; flex: none; }
 .sg .pl { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: #fff; display: grid; place-items: center; transition: 0.35s var(--ease); flex: none; }
+.sg .pl::before, .sg .pl::after, .x-ic::before, .x-ic::after { content: ''; position: absolute; left: 50%; top: 50%; background: currentColor; border-radius: 2px; }
+.sg .pl { position: relative; color: var(--ink); }
+.sg .pl::before { width: 10px; height: 2px; transform: translate(-50%, -50%); }
+.sg .pl::after { width: 2px; height: 10px; transform: translate(-50%, -50%); }
 .sg.open .pl { transform: rotate(45deg); background: var(--ink); color: #fff; }
+.x-ic { position: absolute; inset: 0; pointer-events: none; }
+.x-ic::before, .x-ic::after { width: 16px; height: 2px; }
+.x-ic::before { transform: translate(-50%, -50%) rotate(45deg); }
+.x-ic::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.modal-box .x, .lightbox .x { position: absolute; }
 .sg .content { padding: 0 22px 20px 76px; display: flex; flex-wrap: wrap; gap: 8px; }
 @media (max-width: 480px) { .sg .content { padding-left: 22px; } }
 .sg .content .chip { background: var(--bg2); border: 0; }

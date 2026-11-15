@@ -30,9 +30,7 @@ function LightboxView({ item, onClose }: { item: LightboxItem; onClose: () => vo
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <button type="button" className="x" aria-label="Tutup gambar" onClick={onClose}>
-        ×
-      </button>
+      <button type="button" className="x" aria-label="Tutup gambar" onClick={onClose}><span className="x-ic" aria-hidden="true" /></button>
       <m.picture initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}>
         <source srcSet={imgUrl(item.img.name, 'webp')} type="image/webp" />
         <img src={imgUrl(item.img.name, 'jpg')} width={item.img.w} height={item.img.h} alt={item.img.alt} />

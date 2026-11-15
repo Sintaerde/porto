@@ -64,9 +64,7 @@ export function Skills() {
                       {g.icon}
                     </span>
                     {g.title}
-                    <span className="pl" aria-hidden="true">
-                      +
-                    </span>
+                    <span className="pl" aria-hidden="true" />
                   </button>
                 </h3>
                 <AnimatePresence initial={false}>
