@@ -319,7 +319,12 @@ export const education = {
     thesis: 'Rice Planting Time Prediction Using SARIMA-MFEP Integration in Kubu Raya',
   },
   certs: [
-    { icon: '📄', title: 'Publikasi Jurnal JINITA (SINTA 2)', detail: '2026 · Rice Planting Time Prediction Using SARIMA-MFEP' },
+    {
+      icon: '📄',
+      title: 'Publikasi Jurnal JINITA (SINTA 2)',
+      detail: '2026 · Rice Planting Time Prediction Using SARIMA-MFEP',
+      lightbox: { img: img.jurnal, caption: 'Halaman pertama artikel jurnal JINITA' },
+    },
     {
       icon: '🏅',
       title: 'Sertifikat HKI: Arsipin (Sistem Arsip Surat)',
@@ -366,4 +371,4 @@ export const contact = {
   toast: 'Tersalin ✦',
 }
 
-export const footer = { text: '© 2026 Sinta Rama Dani · Dibuat dengan ✦ dan secangkir teh' }
+export const footer = { text: 'Dibuat Oleh Sinta Rama Dani' }
